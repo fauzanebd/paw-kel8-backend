@@ -17,6 +17,13 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+app.use(function(req, res, next){
+    res.header("Access-Control-Allow-Origin", "https://paw-kelompok-8.vercel.app"); // update to match the domain you will make the request from
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  }
+);
+
 // app.use(cors()); //
 dbcon.on('error', (error) => console.error(error))
 dbcon.once('open', () => console.log('Database Connected...'))
